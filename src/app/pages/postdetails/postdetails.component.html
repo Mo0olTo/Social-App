@@ -1,0 +1,90 @@
+<Section
+  class="mt-10 w-5/6 md:w-3/5 xl:w-2/5 mx-auto bg-gray-500 p-8 rounded-tl-3xl rounded-br-3xl mb-7 min-h-[fit-content]"
+>
+  <div class="container flex flex-col justify-center w-full gap-y-4">
+
+ 
+        <div
+      class="flex flex-col justify-start gap-x-4 items-center bg-[#000033] rounded-lg px-1 py-2 text-white"
+    >
+      <article class=" cursor-pointer self-start px-3 w-full">
+        <div
+          class="flex justify-start items-start gap-x-4  bg-[#000033] rounded-lg text-white"
+        >
+          <div class="self-start">
+            <img
+              [src]="postDetails?.user?.photo"
+              class="h-[70px] w-[70px] rounded-full  border-[2px]"
+              alt=""
+            />
+          </div>
+          <div class="self-center">
+            <h2 class="text-xl ">{{postDetails?.user?.name}}</h2>
+            <p>{{postDetails?.createdAt | date}}</p>
+            <p  class="hidden" [(ngModel)]="post_id">{{postDetails?.id }}</p>
+          </div>
+        </div>
+
+        <p class=" bg-gray-500 py-2 px-1  rounded-t-lg mt-4 pb-6 text-lg">
+          {{postDetails?.body}}
+        </p>
+
+        <img [src]="postDetails?.image" class="w-full h-[100%] rounded-b-lg" alt="">
+
+
+        <div class="flex justify-around items-center mb-6">
+            <button (click)="showPostComments()" class="text-yellow-500 bg-gray-500 rounded-xl px-2 py-1 mt-4 hover:bg-gray-700">Show Comments</button>
+        
+        </div>
+
+
+        
+
+
+ 
+
+
+           
+        
+        @if(showComment){
+                <div class="flex-col  justify-center  items-center bg-gray-500 rounded-lg px-1 py-2 text-white mt-3">
+                   @for (comm of postDetails?.comments; track $index) {
+                    <div class=" w-full py-3 ">
+                        <div
+                        class="flex justify-center items-center py-4 bg-[#000033]  w-full rounded-lg text-white"
+                        >
+                            <div class="w-1/3 justify-between">
+                                <div class="self-start">
+                                    <img
+                                    [src]="comm.commentCreator.photo"
+                                    class="h-[70px] w-[70px] rounded-full  border-[2px]"
+                                    alt=""
+                                    />
+                                </div>
+                                <div class="self-end ">
+                                    <h2 class="text-xl ">{{comm.commentCreator.name}}</h2>
+                                    
+                                </div>
+                            </div>
+                        <h2 class="text-white self-center bg-gray-500 py-2 px-3 rounded-lg ">{{comm.content}}</h2>
+                        </div>
+                    
+                    </div>
+                   }
+                </div>
+            } 
+
+            @if(noComment){
+                <div class="mt-4 bg-gray-500 rounded-lg px-1 py-2 text-white">
+                    <h2 class="text-white"> There is No Comments yet</h2>
+                 </div>
+
+
+               
+            }
+      </article>
+    </div>
+
+    
+  </div>
+</Section>

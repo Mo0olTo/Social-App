@@ -1,0 +1,37 @@
+<Section class="mt-10 w-5/6 md:w-3/5 xl:w-2/5 mx-auto bg-gray-500 p-8 rounded-tl-3xl rounded-br-3xl mb-7 min-h-[fit-content]">
+    <div class="container flex flex-col justify-center items-center w-4/5 ">
+      
+        <div class=" flex justify-center items-center">
+            <img [src]="userPhoto" class="w-[160px] h-[160px] md:w-[30%] md:h-[30%] rounded-full" alt="">
+        </div>
+
+        <div class="flex justify-center flex-col items-center text-center  gap-5 mt-4 ">
+            
+
+            @for (user of userData; track user._id) {
+
+             <div class=" w-full bg-blue-950 rounded-xl px-2 py-1  ">
+                <h1 class="text-white   font-[700] text-xl">Name : {{user.name}}</h1>
+                <h1 class="text-white text-xl">Birth :{{user.dateOfBirth | date : "dd-MM-yy"}}</h1>
+                <h1 class="text-white text-xl">Gender : {{user.gender}}</h1>
+             
+             </div>
+                
+            }
+
+
+
+                
+            <div class="flex flex-col md:flex-row">
+                <button class=" text-yellow-500 bg-blue-950 px-2 py-2 rounded-lg cursor-pointer md:w-1/3" for="file_input">Upload Picture</button>
+            <input class="block  w-full md:w-2/3 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-cell bg-gray-50 dark:text-gray-400 
+            focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" (change)="onFileSelected($event)"  type="file">
+
+            </div>
+            
+        
+        </div>
+
+  
+    </div>
+</Section>

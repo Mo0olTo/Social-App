@@ -9,6 +9,7 @@ import { FlowbiteService } from '../../core/services/flowbite/flowbite.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CommentComponent } from "../comment/comment.component";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit , AfterViewInit{
   private readonly postsService=inject(PostsService)
   private readonly flowbiteService=inject(FlowbiteService)
   private readonly formBuilder=inject(FormBuilder)
+  private readonly toastrService=inject(ToastrService)
   
 
 

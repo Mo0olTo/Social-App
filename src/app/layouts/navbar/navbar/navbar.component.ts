@@ -1,7 +1,7 @@
 import { UserData } from './../../../shared/interfaces/userData/user-data';
 import { AfterViewInit, Component, inject, input, OnDestroy, OnInit } from '@angular/core';
 import { FlowbiteService } from '../../../core/services/flowbite/flowbite.service';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UsersService } from '../../../core/services/users/users.service';
 import { unsubscribe } from 'diagnostics_channel';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit ,AfterViewInit {
 
   private readonly flowbiteService=inject(FlowbiteService)
   private readonly usersService=inject(UsersService)
+  private readonly router=inject(Router)
 
   userData:UserData[]=[]
   
@@ -58,6 +59,11 @@ export class NavbarComponent implements OnInit ,AfterViewInit {
         
       }
     })
+  }
+
+  logOut():void{
+    localStorage.removeItem('socialToken')
+    this.router.navigate(['/login'])
   }
 
 
